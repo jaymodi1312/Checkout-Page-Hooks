@@ -8,3 +8,20 @@ function bbloomer_remove_billing_postcode_checkout( $fields ) {
 }
 
 =======================================================================================================================================
+
+// Change create an account text in Checkout Page
+
+function my_text_strings( $translated_text, $text, $domain ) {
+    switch ( $translated_text ) {
+        case 'Create an account?' :
+            $translated_text = __( 'Create an account? (For easier login in the future)', 'woocommerce' );
+            break;
+    }
+    return $translated_text;
+}
+
+add_filter( 'gettext', 'my_text_strings', 20, 3 );
+
+
+
+=======================================================================================================================================
