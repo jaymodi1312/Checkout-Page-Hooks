@@ -33,3 +33,15 @@ add_filter( 'gettext', 'my_text_strings', 20, 3 );
 
 
 =======================================================================================================================================
+
+//Move your order in WooCommerce Checkout to Top Right
+remove_action( 'woocommerce_checkout_order_review',    'woocommerce_order_review', 10 );
+add_action( 'woocommerce_after_order_notes', 'woocommerce_order_review', 20 );
+
+//Move Payment Options in WooCommerce Checkout to Top Right
+
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+// Add the payment options form under the "order notes" section
+// Important you will have to also add the following custom CSS to your site:
+// body .woocommerce-checkout-payment { float: none; width: 100%; }
+add_action( 'woocommerce_after_order_notes', 'woocommerce_checkout_payment', 20 );
